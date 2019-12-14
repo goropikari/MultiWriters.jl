@@ -15,8 +15,6 @@ function _write(f::Function, ios, x...)
     end
 end
 
-argtypes(m::Method) = fieldtypes(m.sig)
-
 for f in [:write, :print, :println, :show]
     fnname = Symbol("mw", f)
     eval(quote
@@ -26,6 +24,8 @@ for f in [:write, :print, :println, :show]
     end)
 end
 
+# argtypes(m::Method) = fieldtypes(m.sig)
+#
 # for f in [:write, :print, :show]
 #     ms = methods(eval(f)).ms
 #     args_list = sizehint!(Set{Symbol}(), length(ms))
